@@ -1,0 +1,8 @@
+<div class="card">
+    <p class="product__name">{{ productitem.name }}</p>
+    <img class="product__image" [src]="imagesource" [alt]="productitem.name" />
+    <div class="actions">
+        <p class="product__price">€ {{ productitem.price }}</p>
+        <button (click)="onAddToCart(productitem.id)">Add to cart &nbsp; <i class="fas fa-plus"></i></button>
+    </div>
+</div>

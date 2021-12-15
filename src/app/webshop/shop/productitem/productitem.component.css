@@ -1,0 +1,57 @@
+.card{
+    display: flex;
+    flex-direction: column;
+
+    background-color: blanchedalmond;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+    padding: 12px;
+
+    height: 100%;
+}
+
+.product__name{
+    font-weight: bold;
+    font-size: 24px;
+    flex: 1;
+    word-wrap: break-word;
+}
+
+.product__image{
+    flex: 1;
+    width: 100%;
+}
+.product__price{
+    font-weight: bold;
+    color: rgb(68, 68, 68);
+}
+
+.product__name,
+.product__image,
+.actions{
+    padding-bottom: 10px;
+}
+
+.card .actions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.actions button{
+    border: none;
+    background-color: purple;
+    color: white;
+
+    padding: 12px;
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: .25s all ease-in-out;
+}
+
+.actions button:hover{
+    background-color: rgb(66, 0, 66);
+}

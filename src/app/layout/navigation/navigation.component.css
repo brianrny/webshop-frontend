@@ -1,0 +1,150 @@
+.nav-container{
+    justify-items: flex-end;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+
+    background-color: blanchedalmond;
+    border-bottom: 2px solid black;
+    padding: 20px;
+
+    min-height: 75px;
+
+    position: sticky;
+    top: 0;
+    
+    z-index: 2;
+}
+
+
+.nav-item{
+    list-style-type: none;
+}
+
+.nav-item:not(.nav-item:nth-child(1)){
+    margin-left: 20px;
+}
+
+.nav-brand{
+    text-transform: uppercase;
+}
+
+.nav-brand,
+.nav-item > a{
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-item.cart a > i {
+    padding-right: 7.5px;
+}
+
+.nav-item.action a,
+.nav-item.cart a {
+    background: blue;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 25px;
+
+    transition: .25s all ease-in-out;
+}
+
+.nav-item.action a:hover, 
+.nav-item.cart a:hover {
+    background: purple;
+}
+
+.nav-collapse{
+    display: none;
+
+    border: none;
+    background: none;
+
+    cursor: pointer;
+}
+
+.nav-collapse i {
+    font-size: 32px;
+}
+
+.collapsed {
+    display: none !important;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.d-grid{
+    display: grid;
+}
+
+.d-none{
+    display: none !important;
+}
+
+.nav-group{
+    display: none;
+}
+
+@media screen and (max-width: 768px){
+    .nav-collapse {
+        display: block;
+    }
+
+    .nav-list {
+        display: grid;
+        grid-gap: 20px;
+        justify-content: center;
+        align-items: center;
+
+        height: calc(100vh - 75px);
+        width: 100%;
+        padding: 20px;
+        
+        position: absolute;
+        top: 75px;
+        left: 0;
+        
+        background-color: blanchedalmond;
+
+        grid-template-columns: 1fr;
+    }
+
+    .nav-item {
+        height: 100%;
+    }
+
+    .nav-item a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        height: 100%;
+    }
+
+    .nav-group{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        padding: 25px;
+        border-radius: 20px;
+
+        background: blue;
+    }
+
+    .nav-group > div > * {
+        margin: 0;
+        padding: 25px 0;
+    }
+
+    .nav-group .nav-item.action > a{
+        background: white !important;
+        color: blue !important;
+    }
+
+    .nav-item{
+        margin-left: 0 !important;
+    }
+}
