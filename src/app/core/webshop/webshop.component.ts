@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/shared/models/product.model';
 
-import { WebshopService } from './webshop.service';
+import { WebshopService } from '../services/webshop.service';
 
 @Component({
   selector: 'app-webshop',

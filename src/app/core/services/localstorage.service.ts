@@ -30,20 +30,23 @@ export class LocalstorageService {
   }
 
   addProductToCart(product: Product){
-    const adjustedList: Product[] = [];
+    const currentList: Product[] = [];
+    let adjustedList: Product[] = [];
 
     if(this.getParsedCartItems() != 'null' && this.getParsedCartItems()){
       for(let i = 0; i < this.getLengthOfCart(); i++){
-        adjustedList.push(this.getParsedCartItems()[i])
+        currentList.push(this.getParsedCartItems()[i])
       }
 
-      adjustedList.push(product);
+      adjustedList = currentList.concat(product);
     }
 
     if(this.getParsedCartItems() == 'null' && 
     !this.getParsedCartItems() || this.getParsedCartItems == null){
-      adjustedList.push(product);
-      console.log("the case")
+      currentList.push(product);    
+      adjustedList = currentList;
+
+      return;
     }
 
     setTimeout(() => { localStorage.setItem("cart", JSON.stringify(adjustedList)) }, 50);

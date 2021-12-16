@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './notfound/notfound.component';
-import { OrderComponent } from './dashboard/order/order.component';
-import { OrderdetailsComponent } from './dashboard/orderdetails/orderdetails.component';
-import { UserComponent } from './dashboard/user/user.component';
-import { ShopComponent } from './webshop/shop/shop.component';
-import { ProductComponent } from './dashboard/product/product.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CartComponent } from './webshop/cart/cart.component';
-import { LoginComponent } from './webshop/login/login.component';
-import { WebshopComponent } from './webshop/webshop.component';
+import { NotFoundComponent } from './core/notfound/notfound.component';
+import { OrderComponent } from './core/dashboard/order/order.component';
+import { OrderdetailsComponent } from './core/dashboard/orderdetails/orderdetails.component';
+import { UserComponent } from './core/dashboard/user/user.component';
+import { ProductComponent } from './core/dashboard/product/product.component';
+import { DashboardComponent } from './core/dashboard/dashboard.component';
+import { CartComponent } from './core/webshop/cart/cart.component';
+import { LoginComponent } from './core/webshop/login/login.component';
+import { WebshopComponent } from './core/webshop/webshop.component';
 
 const routes: Routes = [
   { path: '', component: WebshopComponent },

@@ -4,22 +4,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { NotFoundComponent } from './notfound/notfound.component';
-import { ProductComponent } from './dashboard/product/product.component';
-import { LayoutComponent } from './layout/layout.component';
-import { NavigationComponent } from './layout/navigation/navigation.component';
+import { NotFoundComponent } from './core/notfound/notfound.component';
+import { ProductComponent } from './core/dashboard/product/product.component';
+import { LayoutComponent } from './core/layout/layout.component';
+import { NavigationComponent } from './core/navigation/navigation.component';
 import { FormsModule } from '@angular/forms';
-import { FooterComponent } from './layout/footer/footer.component';
-import { OrderComponent } from './dashboard/order/order.component';
-import { OrderdetailsComponent } from './dashboard/orderdetails/orderdetails.component';
-import { UserComponent } from './dashboard/user/user.component';
-import { UiComponent } from './layout/ui/ui.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { WebshopComponent } from './webshop/webshop.component';
-import { LoginComponent } from './webshop/login/login.component';
-import { CartComponent } from './webshop/cart/cart.component';
-import { ShopComponent } from './webshop/shop/shop.component';
-import { ProductitemComponent } from './webshop/shop/productitem/productitem.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { OrderComponent } from './core/dashboard/order/order.component';
+import { OrderdetailsComponent } from './core/dashboard/orderdetails/orderdetails.component';
+import { UserComponent } from './core/dashboard/user/user.component';
+import { DashboardComponent } from './core/dashboard/dashboard.component';
+import { WebshopComponent } from './core/webshop/webshop.component';
+import { LoginComponent } from './core/webshop/login/login.component';
+import { CartComponent } from './core/webshop/cart/cart.component';
+import { ShopComponent } from './core/webshop/shop/shop.component';
+import { ProductitemComponent } from './core/webshop/shop/productitem/productitem.component';
+import { FormComponent } from './core/webshop/login/form/form.component';
+import { BannerComponent } from '../shared/components/ui/banner/banner.component';
+import { AlertComponent } from './core/webshop/login/form/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +34,15 @@ import { ProductitemComponent } from './webshop/shop/productitem/productitem.com
     OrderComponent,
     OrderdetailsComponent,
     UserComponent,
-    UiComponent,
     DashboardComponent,
     WebshopComponent,
     LoginComponent,
     CartComponent,
     ShopComponent,
     ProductitemComponent,
+    FormComponent,
+    BannerComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

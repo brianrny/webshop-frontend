@@ -9,8 +9,8 @@
             <li class="nav-item"><a routerLink="/dashboard">Dashboard</a></li>
             <li class="nav-item"><a routerLink="/order">Orders</a></li>
             <li class="nav-item cart"><a routerLink="/cart"><i class="fas fa-shopping-cart"></i>Cart ({{ localStorageService.getLengthOfCart() || 0 }})</a></li>
-            <li *ngIf="!logged_in" class="nav-item action"><a routerLink="/login">Login</a></li>
-            <li *ngIf="logged_in" class="nav-item action"><a routerLink="/logout">Logout</a></li>
+            <li *ngIf="loginService.getLoginState() == false" class="nav-item action"><a routerLink="/login">Login</a></li>
+            <li *ngIf="loginService.getLoginState() == true" class="nav-item action"><a routerLink="/logout">Logout</a></li>
         </ul>
     </div>
 </nav>

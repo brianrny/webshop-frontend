@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LocalstorageService } from 'src/app/localstorage.service';
+import { LocalstorageService } from 'src/app/core/services/localstorage.service';
 import { Product } from 'src/shared/models/product.model';
-import { WebshopService } from '../../webshop.service';
+import { WebshopService } from '../../../services/webshop.service';
 
 @Component({
   selector: 'app-productitem',
