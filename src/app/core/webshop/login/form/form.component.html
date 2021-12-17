@@ -1,16 +1,24 @@
 
-<div>
-    <form>
+<div class="container">
+    <form #info="ngForm" (ngSubmit)="onFormSubmit(info)">
         <app-alert></app-alert>
-        <legend>Log in om bestellingen te kunnen plaatsen.</legend>
-        <div class="form-control">
+        <legend>Login</legend>
+        <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" />
+            <input name="username" ngModel type="text" id="username" />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input name="password" ngModel type="password" id="password" />
         </div>
         <div class="form-control">
-            <label for="password">Password</label>
-            <input type="password" id="password" />
+            <label for="remember_me">Remember me</label>
+            <input name="remember" ngModel type="checkbox" id="remember_me" />
         </div>
-        <button>Log in</button>
+        <button type="submit" class="login">Log in</button>
     </form>
+    
+    <div class="alternative">
+        <button class="registreren">Registreren</button>
+    </div>
 </div>

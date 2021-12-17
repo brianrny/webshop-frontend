@@ -14,12 +14,9 @@ export class ProductitemComponent implements OnInit {
 
   @Input() productitem!: Product;
 
-  imagesource: String;
-
   constructor(webshopService: WebshopService, localStorageService: LocalstorageService) { 
     this.webshopService = webshopService;
     this.localStorageService = localStorageService;
-    this.imagesource = "../../../../assets/images/webshop-banner.jpg";
   }
 
   ngOnInit(): void {
@@ -31,11 +28,9 @@ export class ProductitemComponent implements OnInit {
     this.localStorageService.addProductToCart(targetProduct);
   }
 
-  onClearCart(){
-    localStorage.removeItem("cart");
-  }
+  onProductClick(product_id: number){
+    const targetProduct = this.webshopService.getProductById(product_id);
 
-  onRemoveFromCart(){
-    
+    console.log(targetProduct);
   }
 }

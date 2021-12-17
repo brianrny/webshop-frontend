@@ -1,6 +1,25 @@
+.product__container {
+}
+
 .product__container h2{
     text-align: center;
     padding: 24px;
+    color: black;
+}
+
+app-banner * {
+    padding: 15px 0 ;
+}
+
+app-banner h1{
+    font-size: 64px;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+
+app-banner p {
+    border-top: 2px solid black;
+    max-width: 350px;
 }
 
 .container{

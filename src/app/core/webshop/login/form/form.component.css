@@ -1,0 +1,77 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+
+    margin-right: auto;
+}
+
+form{
+    padding-bottom: 25px;
+}
+form > *{
+    padding: 10px 0;
+}
+
+legend {
+    font-size: 32px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group > *{
+    margin-bottom: 5px;
+}
+
+.form-group input{
+    border: none;
+    border-radius: 5px;
+    padding: 12.5px;
+
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+    0 2px 2px rgba(0,0,0,0.12), 
+    0 4px 4px rgba(0,0,0,0.12), 
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+}
+.form-group label{
+    font-size: 24px;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+}
+
+input[type="checkbox"]{
+    border: 5px solid red;
+}
+
+.alternative{
+    padding-top: 25px;
+    border-top: 2px solid darkseagreen;
+}
+
+button{
+    background: darkseagreen;
+    padding: 15px;
+    color: white;
+    border: 2px solid darkseagreen;
+    border-radius: 5px;
+
+    font-size: 24px;
+    width: 100%;
+
+    cursor: pointer;
+
+    transition: 0.25s all ease-in-out;
+}
+
+button:hover{
+    background: white;
+    color: darkseagreen;
+}

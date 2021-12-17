@@ -1,6 +1,6 @@
 <div>
-    <div *ngIf="!webshopService.isLoaded">
-        <h1>Data is loading...</h1>
+    <div *ngIf="!webshopService.products">
+        <h1>No products available.</h1>
     </div>
     <div *ngIf="webshopService.isLoaded">
         <app-shop [products]="webshopService.products"></app-shop>

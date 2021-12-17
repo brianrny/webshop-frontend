@@ -1,35 +1,29 @@
 .banner {
-    background-image: url("../../../../assets/images/webshop-banner.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    min-height: 250px;
-
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+
+    min-height: 350px;
 
     position: relative;
 
-    padding: 24px 0;
-
     z-index: 1;
+
+    border: 20px solid darkseagreen;
 }
 
-.background--dark{
-    background: rgba(000, 000, 000, 0.5);
+.banner-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1
+}
 
-    position: absolute;
-
-    height: 100%;
-    width: 100%;
-
-    z-index: -1;
+.banner-right{
+    background: darkseagreen;
+    flex: 1;
 }
 
 .banner ::ng-deep > *{
-    color: white;
-    text-align: center;
+    color: black;
     padding: 16px 42px;
 }

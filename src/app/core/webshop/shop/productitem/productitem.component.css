@@ -2,57 +2,119 @@
     display: flex;
     flex-direction: column;
 
-    background-color: blanchedalmond;
-    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
-    padding: 12px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15), 
+    0 2px 2px rgba(0,0,0,0.15), 
+    0 4px 4px rgba(0,0,0,0.15), 
+    0 8px 8px rgba(0,0,0,0.15);
 
     height: 100%;
+
+    position: relative;
+
+    border-radius: 25px;
 }
 
-.product__name{
-    font-weight: bold;
-    font-size: 24px;
-    flex: 1;
-    word-wrap: break-word;
-}
-
-.product__image{
-    flex: 1;
-    width: 100%;
-}
-.product__price{
-    font-weight: bold;
-    color: rgb(68, 68, 68);
-}
-
-.product__name,
-.product__image,
-.actions{
-    padding-bottom: 10px;
-}
-
-.card .actions{
+.cart__top{
     display: flex;
-    align-items: center;
     justify-content: space-between;
+
+    background: white;
+    width: 100%;
+
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
 }
 
-.actions button{
-    border: none;
-    background-color: purple;
-    color: white;
+.cart__top .product__name, 
+.cart__top .product__price,
+.cart__overlay button{
+    letter-spacing: -1px;
+}
 
-    padding: 12px;
-    border-radius: 10px;
-
+.cart__top .product__name{
     font-size: 16px;
     font-weight: bold;
 
-    cursor: pointer;
-
-    transition: .25s all ease-in-out;
+    word-break: break-all;
 }
 
-.actions button:hover{
-    background-color: rgb(66, 0, 66);
+.cart__top .product__price{
+
+}
+
+.cart__body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-size: cover;
+    height: 250px;
+    max-height: 250px;
+
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.cart__top,
+.cart__bottom{
+    padding: 15px 20px;
+}
+
+.cart__bottom{
+    margin-left: auto;
+}
+
+.cart__overlay{
+    background: rgba(0,0,0, 0.5);
+    height: 100%;
+    width: 100%;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+
+    transition: 0.25s all ease-in-out;
+    opacity: 0;
+    z-index: 1;
+}
+
+.cart__body:hover .cart__overlay{
+    opacity: 1;
+}
+
+.cart__overlay button{
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 25px;
+    
+    font-size: 16px;
+}
+
+.actions button{
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+    padding: 0;
+
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+
+    border-radius: 50px;
+    border: none;
+
+    z-index: 1;
+
+}
+
+button {
+    cursor: pointer;
+    transition: 0.25s all ease-in-out;
+}
+
+button:hover{
+    background: black;
+    color: white;
 }

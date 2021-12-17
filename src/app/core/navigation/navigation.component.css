@@ -3,8 +3,8 @@
     grid-template-columns: auto 1fr;
     align-items: center;
 
-    background-color: blanchedalmond;
-    border-bottom: 2px solid black;
+    background-color: white;
+    border-bottom: 2px solid darkseagreen;
     padding: 20px;
 
     min-height: 75px;
@@ -32,7 +32,7 @@
 .nav-item > a{
     padding: 10px;
     text-decoration: none;
-    color: black;
+    color: darkseagreen;
 }
 
 .nav-item.cart a > i {
@@ -41,17 +41,19 @@
 
 .nav-item.action a,
 .nav-item.cart a {
-    background: blue;
-    color: white;
+    background: white;
+    color: darkseagreen;
     border-radius: 10px;
     padding: 10px 25px;
+    border: 2px solid darkseagreen;
 
     transition: .25s all ease-in-out;
 }
 
 .nav-item.action a:hover, 
 .nav-item.cart a:hover {
-    background: purple;
+    background: darkseagreen;
+    color: white;
 }
 
 .nav-collapse{
@@ -106,7 +108,7 @@
         top: 75px;
         left: 0;
         
-        background-color: blanchedalmond;
+        background-color: white;
 
         grid-template-columns: 1fr;
     }
@@ -122,18 +124,7 @@
         
         height: 100%;
     }
-
-    .nav-group{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        padding: 25px;
-        border-radius: 20px;
-
-        background: blue;
-    }
-
+    
     .nav-group > div > * {
         margin: 0;
         padding: 25px 0;
