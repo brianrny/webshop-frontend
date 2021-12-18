@@ -38,10 +38,6 @@
     word-break: break-all;
 }
 
-.cart__top .product__price{
-
-}
-
 .cart__body{
     display: flex;
     justify-content: center;
@@ -83,13 +79,19 @@
     opacity: 1;
 }
 
-.cart__overlay button{
+.cart__overlay a{
     padding: 10px 20px;
 
     border: none;
     border-radius: 25px;
     
     font-size: 16px;
+
+    color: black;
+    text-decoration: none;
+    background: white;
+
+    transition: 0.25s all ease-in-out;
 }
 
 .actions button{
@@ -114,7 +116,7 @@ button {
     transition: 0.25s all ease-in-out;
 }
 
-button:hover{
+button:hover, .cart__overlay a:hover{
     background: black;
     color: white;
 }

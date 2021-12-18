@@ -1,1 +1,31 @@
-<p>cart works!</p>
+<div class="wrapper">
+    <app-banner>
+        <h1>Cart</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi ad maxime illum assumenda eum deleniti unde
+            delectus repellat maiores hic, consequatur accusantium, laudantium ducimus. Qui distinctio quisquam ipsa
+            totam accusamus. </p>
+    </app-banner>
+    <div class="container">
+        <ul>
+            <li class="product" *ngFor="let product of localStorageService.uniqueList">
+                <img class="product__image" [src]="product.product!.imageUrl" />
+                <p class="product__name">{{product.product!.name}}</p>
+                <p class="product__description">{{product.product!.description}}</p>
+                <p class="product__price">€ {{ product.product!.price * product.amount }}</p>
+                <div class="actions">
+                    <button (click)="navigateToProduct(product.product!.id)"><i class="fas fa-eye"></i></button>
+                    <input min="0" max="99" type="number" (change)="onAmountChange(product, $event)"
+                        [value]="product.amount" />
+                    <button (click)="onDeleteCartItem(product)"><i class="fas fa-trash-alt"></i></button>
+                </div>
+            </li>
+            <li *ngIf="localStorageService.uniqueList.length == 0">
+                <h1>No products in your cart.</h1>
+            </li>
+        </ul>
+        <div *ngIf="localStorageService.uniqueList.length != 0">
+            <p>Total price € {{ getTotalPrice() }} excl. btw</p>
+            <button (click)="proceedToCheckout()">Proceed to checkout</button>
+        </div>
+    </div>
+</div>

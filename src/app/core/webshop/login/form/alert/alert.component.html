@@ -1,3 +1,5 @@
-<div class="alert">
-    <p>{{ message }}</p>
+<div class="alert" *ngIf="show">
+    <p
+        [style.background]="type == 'warning' ? 'orange' : type == 'error' ? 'red': type == 'success' ? 'green' : 'white'">
+        {{ message }}</p>
 </div>

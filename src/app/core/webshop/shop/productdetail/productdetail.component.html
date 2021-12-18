@@ -1,0 +1,19 @@
+<div>
+    <app-banner>
+        <h1>Product details</h1>
+    </app-banner>
+    <app-previous></app-previous>
+    <div class="container" *ngIf="isLoaded">
+        <div class="product">
+            <img class="product__image" [src]="product.imageUrl" />
+            <div class="product__details">
+                <h2 class="product__name">{{ product.name }}</h2>
+                <p class="product__description">{{ product.description }}</p>
+                <p class="product__price">€ {{ product.price }}</p>
+                <div class="actions">
+                    <button (click)="onAddToCart(product)">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

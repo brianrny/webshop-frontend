@@ -10,9 +10,7 @@ import { WebshopService } from '../../services/webshop.service';
 export class ShopComponent implements OnInit {
   @Input() products!: Product[];
 
-  webshopService: WebshopService;
-
-  constructor(webshopService: WebshopService) { 
+  constructor(public webshopService: WebshopService) { 
     this.webshopService = webshopService;
   }
 

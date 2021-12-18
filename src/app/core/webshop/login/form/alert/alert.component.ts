@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-alert',
@@ -9,16 +9,20 @@ export class AlertComponent implements OnInit {
   show: boolean;
   message: String;
 
-  constructor() { 
+  type: string = "default"
+
+  constructor() {
     this.show = false;
     this.message = "";
 
-    if(this.message != ""){
+    if (this.message != "") {
       this.show = true;
     }
   }
 
   ngOnInit(): void {
   }
+
+
 
 }

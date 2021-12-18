@@ -10,19 +10,19 @@ export class WebshopService {
   products!: Product[];
   isLoaded: boolean;
 
-  constructor() { 
+  constructor() {
     this.isLoaded = false;
 
     this.getAllProducts();
   }
 
-  getProductById(id: number){
-    const [product] = this.products.filter(product => { return product.id == id });
-    
+  getProductById(id: number): Product {
+    const [product] = this.products.filter(product => product.id == id);
+
     return product;
   }
 
-  async getAllProducts(){
+  async getAllProducts() {
     this.products = await this.fetchAllProducts();
   }
 
@@ -32,6 +32,6 @@ export class WebshopService {
 
     this.isLoaded = true;
 
-    return plainToInstance(Product, data, {strategy: 'excludeAll'});
+    return plainToInstance(Product, data, { strategy: 'excludeAll' });
   }
 }

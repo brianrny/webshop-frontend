@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './core/notfound/notfound.component';
@@ -22,6 +22,9 @@ import { ProductitemComponent } from './core/webshop/shop/productitem/productite
 import { FormComponent } from './core/webshop/login/form/form.component';
 import { BannerComponent } from '../shared/components/ui/banner/banner.component';
 import { AlertComponent } from './core/webshop/login/form/alert/alert.component';
+import { ProductdetailComponent } from './core/webshop/shop/productdetail/productdetail.component';
+import { PreviousComponent } from '../shared/components/ui/previous/previous.component';
+import { HttpConfigInterceptor } from './core/interceptors/httpconfig.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { AlertComponent } from './core/webshop/login/form/alert/alert.component'
     FormComponent,
     BannerComponent,
     AlertComponent,
+    ProductdetailComponent,
+    PreviousComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,9 +56,8 @@ import { AlertComponent } from './core/webshop/login/form/alert/alert.component'
     FormsModule,
   ],
   providers: [
-    {
-      provide: Window, useValue: window
-    }
+    { provide: Window, useValue: window },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

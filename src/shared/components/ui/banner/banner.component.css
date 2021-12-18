@@ -14,13 +14,9 @@
 .banner-left{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     flex: 1
-}
-
-.banner-right{
-    background: darkseagreen;
-    flex: 1;
 }
 
 .banner ::ng-deep > *{

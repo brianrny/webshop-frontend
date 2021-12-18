@@ -3,7 +3,7 @@
     flex-direction: column;
     max-width: 500px;
 
-    margin-right: auto;
+    margin: auto;
 }
 
 form{
@@ -45,10 +45,12 @@ legend {
     display: flex;
     flex-direction: row-reverse;
     justify-content: left;
+    align-items: center;
 }
 
 input[type="checkbox"]{
     border: 5px solid red;
+    margin-right: 10px;
 }
 
 .alternative{

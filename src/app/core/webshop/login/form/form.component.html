@@ -1,15 +1,15 @@
-
 <div class="container">
     <form #info="ngForm" (ngSubmit)="onFormSubmit(info)">
-        <app-alert></app-alert>
+        <app-alert (formInfo)="info"></app-alert>
         <legend>Login</legend>
         <div class="form-group">
             <label for="username">Username</label>
-            <input name="username" ngModel type="text" id="username" />
+            <input name="username" ngModel type="text" id="username"
+                [ngModel]="localstorageService.getRememberedUsername()" required />
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input name="password" ngModel type="password" id="password" />
+            <input name="password" ngModel type="password" id="password" required />
         </div>
         <div class="form-control">
             <label for="remember_me">Remember me</label>
@@ -17,7 +17,7 @@
         </div>
         <button type="submit" class="login">Log in</button>
     </form>
-    
+
     <div class="alternative">
         <button class="registreren">Registreren</button>
     </div>

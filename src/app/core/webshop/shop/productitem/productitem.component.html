@@ -3,9 +3,9 @@
         <p class="product__name">{{productitem.name}}</p>
         <p class="product__price">€{{productitem.price}}</p>
     </div>
-    <div class="cart__body"  [ngStyle]="{'background-image': 'url(' + (productitem.imageUrl) + ')'}">
+    <div class="cart__body" [ngStyle]="{'background-image': 'url(' + (productitem.imageUrl) + ')'}">
         <div class="cart__overlay">
-            <button (click)="onProductClick(productitem.id)">View product</button>
+            <a [routerLink]="'/product/' + productitem.id">View product</a>
         </div>
         <div class="actions">
             <button (click)="onAddToCart(productitem.id)"><i class="fas fa-plus"></i></button>

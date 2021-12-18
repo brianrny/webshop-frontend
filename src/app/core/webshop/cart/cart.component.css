@@ -1,0 +1,137 @@
+app-banner * {
+    padding: 15px 0 ;
+}
+
+app-banner h1{
+    font-size: 64px;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+
+app-banner p {
+    border-top: 2px solid black;
+    max-width: 350px;
+}
+
+ul{
+    margin-top: 25px;
+    border-radius: 15px;
+    border: 2px solid black;
+}
+
+li{
+    padding: 25px;
+    list-style-type: none;
+    transition: .25s all ease-in-out;
+}
+
+li:nth-child(1){
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+li:last-child{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+li:hover{
+    background: rgb(172, 221, 172) !important;
+}
+
+li:nth-child(2n){
+    background: darkseagreen;
+}
+
+li:nth-child(2n) .actions button{
+    background: white;
+}
+
+li:nth-child(2n) .actions button:hover{
+    background: darkseagreen;
+}
+
+button {
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: 2px solid darkseagreen;
+    background: darkseagreen;
+    font-size: 16px;
+    font-weight: bold;
+    transition: .25s all ease-in-out;
+}
+
+.container{
+    padding: 10px 20px 30px 20px;
+
+    max-width: 1280px;
+    margin: auto;
+}
+
+.container > div {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.container > div > p {
+    font-size: 24px;
+}
+
+.container > div > button {
+    margin-top: 15px;
+}
+
+.container div button:hover {
+    background: white;
+}
+
+.product__name, 
+.product__description{
+    flex: 1;
+}
+
+.product__name,
+.product__description,
+.product__price{
+    margin-left: 25px;
+}
+
+.product__price{
+    flex: 0.5;
+}
+
+.product__image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+}
+
+.actions input {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.actions button {
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
