@@ -14,16 +14,16 @@ export class LocalstorageService {
   uniqueList: ProductItem[];
 
   constructor() {
+    if (localStorage.getItem("webshop_stored_cart") == null) {
+      localStorage.setItem("webshop_stored_cart", JSON.stringify([]));
+    }
+
     this.currentList = this.getParsedCartItems();
     this.uniqueList = [...new Map(this.currentList.map((item) => [item['product']!.id, item])).values()] || []
-
-    if (localStorage.getItem("cart") == null) {
-      localStorage.setItem("cart", JSON.stringify([]));
-    }
   }
 
   getCartLocalStorage() {
-    return localStorage.getItem("cart");
+    return localStorage.getItem("webshop_stored_cart");
   }
 
   getParsedCartItems(): ProductItem[] {
@@ -107,10 +107,10 @@ export class LocalstorageService {
   setCartLocalStorage(): void {
     this.uniqueList = [...new Map(this.currentList.map((item) => [item['product']!.id, item])).values()]
 
-    setTimeout(() => { localStorage.setItem("cart", JSON.stringify(this.uniqueList)) }, 50);
+    setTimeout(() => { localStorage.setItem("webshop_stored_cart", JSON.stringify(this.uniqueList)) }, 50);
   }
 
-  removeProductFromCart(targetproduct: ProductItem) {
+  removeProductFromCart(targetproduct: ProductItem): void {
     for (let i = 0; i < this.currentList.length; i++) {
       if (this.currentList[i].product!.id == targetproduct.product!.id) {
         this.currentList.splice(i, 1)
@@ -120,19 +120,39 @@ export class LocalstorageService {
     this.setCartLocalStorage();
   }
 
-  getRememberedUsername() {
-    return localStorage.getItem("storedUsername")
+  getRememberedUsername(): string {
+    return localStorage.getItem("webshop_stored_username")!
   }
 
-  setRememberedUsername(username: string) {
-    localStorage.setItem("storedUsername", username)
+  setRememberedUsername(username: string): void {
+    localStorage.setItem("webshop_stored_username", username)
   }
 
-  getStoredToken() {
-    return localStorage.getItem("storedToken")
+  removeRemeberedUsername(): void {
+    localStorage.removeItem("webshop_stored_username");
   }
 
-  setStoredToken(token: string) {
-    localStorage.setItem("storedToken", token)
+  getStoredToken(): string {
+    return localStorage.getItem("webshop_stored_token")!
+  }
+
+  setStoredToken(token: string): void {
+    localStorage.setItem("webshop_stored_token", token)
+  }
+
+  removeStoredToken(): void {
+    localStorage.removeItem("webshop_stored_token");
+  }
+
+  getStoredUserId(): string {
+    return localStorage.getItem("webshop_user_id")!;
+  }
+
+  setStoredUserId(id: number): void {
+    localStorage.setItem("webshop_user_id", id.toString())
+  }
+
+  removeStoredUserId(): void {
+    localStorage.removeItem("webshop_user_id");
   }
 }

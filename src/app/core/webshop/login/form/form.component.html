@@ -1,6 +1,8 @@
 <div class="container">
     <form #info="ngForm" (ngSubmit)="onFormSubmit(info)">
-        <app-alert (formInfo)="info"></app-alert>
+        <div *ngIf="message"
+            [style.background]="message.type == 'failed' ? '#a11a1a' : message.type == 'success' ? 'darkseagreen' : ''"
+            class="alert">{{ message.message }}</div>
         <legend>Login</legend>
         <div class="form-group">
             <label for="username">Username</label>

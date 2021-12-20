@@ -10,6 +10,8 @@ import { CartComponent } from './core/webshop/cart/cart.component';
 import { LoginComponent } from './core/webshop/login/login.component';
 import { WebshopComponent } from './core/webshop/webshop.component';
 import { ProductdetailComponent } from './core/webshop/shop/productdetail/productdetail.component';
+import { LogoutComponent } from './core/webshop/logout/logout.component';
+import AuthGuard from './core/services/authguard.service';
 
 const routes: Routes = [
   { path: '', component: WebshopComponent },
@@ -17,7 +19,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent },
   { path: 'order', component: OrderComponent },
   { path: 'orderdetail', component: OrderdetailsComponent },

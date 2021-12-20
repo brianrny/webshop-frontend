@@ -77,3 +77,8 @@ button:hover{
     background: white;
     color: darkseagreen;
 }
+
+.alert {
+    padding: 15px 10px !important;
+    border-radius: 15px;
+}

@@ -14,8 +14,8 @@
                 <p class="product__price">€ {{ product.product!.price * product.amount }}</p>
                 <div class="actions">
                     <button (click)="navigateToProduct(product.product!.id)"><i class="fas fa-eye"></i></button>
-                    <input min="0" max="99" type="number" (change)="onAmountChange(product, $event)"
-                        [value]="product.amount" />
+                    <input min="0" max="99" type="text" inputmode="numeric" pattern="[0-9]*"
+                        (change)="onAmountChange(product, $event)" [value]="product.amount" />
                     <button (click)="onDeleteCartItem(product)"><i class="fas fa-trash-alt"></i></button>
                 </div>
             </li>

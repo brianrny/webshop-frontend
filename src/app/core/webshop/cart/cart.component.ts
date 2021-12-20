@@ -49,7 +49,7 @@ export class CartComponent implements OnInit {
   }
 
   proceedToCheckout() {
-    if (this.loginService.isLoggedIn()) {
+    if (this.loginService.isAuthenticated()) {
       this.router.navigate(['/order'])
     } else {
       this.loginService.setIsRedirected(true);

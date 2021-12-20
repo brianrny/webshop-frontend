@@ -1,16 +1,16 @@
-
 <nav class="nav-container d-grid" (resize)="onResize()">
     <b><a class="nav-brand logo" routerLink="">Home</a></b>
 
     <div class="navbar">
         <button class="nav-collapse" (click)="onCollapse()"><i class="fas fa-bars"></i></button>
-        
+
         <ul class="nav-list d-flex" (ngModel)="collapsed" [class.collapsed]="collapsed">
-            <li class="nav-item"><a routerLink="/dashboard">Dashboard</a></li>
-            <li class="nav-item"><a routerLink="/order">Orders</a></li>
-            <li class="nav-item cart"><a routerLink="/cart"><i class="fas fa-shopping-cart"></i>Cart ({{ localStorageService.getTotalAmountItemsOfCart() || 0 }})</a></li>
-            <li *ngIf="loginService.isLoggedIn() == false" class="nav-item action"><a routerLink="/login">Login</a></li>
-            <li *ngIf="loginService.isLoggedIn() == true" class="nav-item action"><a routerLink="/logout">Logout</a></li>
+            <li *ngIf="userService.isAdmin() == true" class="nav-item"><a routerLink="/dashboard">Dashboard</a></li>
+            <li *ngIf="loginService.isAuthenticated()" class="nav-item"><a routerLink="/order">Orders</a></li>
+            <li class="nav-item cart"><a routerLink="/cart"><i class="fas fa-shopping-cart"></i>Cart ({{
+                    localStorageService.getTotalAmountItemsOfCart() || 0 }})</a></li>
+            <li *ngIf="!loginService.isAuthenticated()" class="nav-item action"><a routerLink="/login">Login</a></li>
+            <li *ngIf="loginService.isAuthenticated()" class="nav-item action"><a routerLink="/logout">Logout</a></li>
         </ul>
     </div>
 </nav>

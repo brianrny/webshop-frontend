@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalstorageService } from 'src/app/core/services/localstorage.service';
 import { LoginService } from '../services/login.service';
+import UserService from '../services/user.service';
 
 @Component({
   selector: 'app-navigation',
@@ -15,13 +16,13 @@ export class NavigationComponent implements OnInit {
   loginService: LoginService;
   collapsed: boolean;
 
-  constructor(private window: Window, localStorageService: LocalstorageService, loginService: LoginService) { 
+  constructor(private window: Window, localStorageService: LocalstorageService, loginService: LoginService, public userService: UserService) {
     this.collapsed = false;
 
     this.localStorageService = localStorageService;
     this.loginService = loginService;
 
-    if(this.window.innerWidth <= 768){
+    if (this.window.innerWidth <= 768) {
       this.collapsed = true;
     }
   }
@@ -29,14 +30,14 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onCollapse(){
+  onCollapse() {
     this.collapsed = !this.collapsed;
   }
 
-  onResize(){
-    if(this.window.innerWidth <= 768){
+  onResize() {
+    if (this.window.innerWidth <= 768) {
       this.collapsed = true;
-    } else{
+    } else {
       this.collapsed = false;
     }
   }

@@ -54,6 +54,7 @@
 .nav-item.cart a:hover {
     background: darkseagreen;
     color: white;
+    cursor: pointer;
 }
 
 .nav-collapse{

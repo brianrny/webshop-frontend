@@ -21,10 +21,11 @@ import { ShopComponent } from './core/webshop/shop/shop.component';
 import { ProductitemComponent } from './core/webshop/shop/productitem/productitem.component';
 import { FormComponent } from './core/webshop/login/form/form.component';
 import { BannerComponent } from '../shared/components/ui/banner/banner.component';
-import { AlertComponent } from './core/webshop/login/form/alert/alert.component';
 import { ProductdetailComponent } from './core/webshop/shop/productdetail/productdetail.component';
 import { PreviousComponent } from '../shared/components/ui/previous/previous.component';
 import { HttpConfigInterceptor } from './core/interceptors/httpconfig.interceptor';
+import { LogoutComponent } from './core/webshop/logout/logout.component';
+import AuthGuard from './core/services/authguard.service';
 
 @NgModule({
   declarations: [
@@ -45,9 +46,9 @@ import { HttpConfigInterceptor } from './core/interceptors/httpconfig.intercepto
     ProductitemComponent,
     FormComponent,
     BannerComponent,
-    AlertComponent,
     ProductdetailComponent,
     PreviousComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +58,8 @@ import { HttpConfigInterceptor } from './core/interceptors/httpconfig.intercepto
   ],
   providers: [
     { provide: Window, useValue: window },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
+    [AuthGuard]
   ],
   bootstrap: [AppComponent]
 })
