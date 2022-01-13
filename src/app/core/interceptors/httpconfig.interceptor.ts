@@ -2,14 +2,13 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, throwError } from "rxjs";
 import { LocalstorageService } from "../services/localstorage.service";
-import UserService from "../services/user.service";
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-    constructor(private localstorageService: LocalstorageService, private userService: UserService) { }
+    constructor(private localstorageService: LocalstorageService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const token = this.localstorageService.getStoredToken();
+        const token = this.localstorageService.getStorageItem("webshop_stored_token");
 
         if (token != 'null' || token != null) {
             req = req.clone({ headers: req.headers.set('Authorization', `Bearer ${token}`) })

@@ -1,0 +1,87 @@
+<div>
+    <app-banner>
+        <h1>Register</h1>
+        <p>Register to grant more permission.</p>
+    </app-banner>
+    <app-previous></app-previous>
+    <div class="container">
+        <form #info="ngForm" (ngSubmit)="onFormSubmit(info)" [noValidate]="false">
+            <div class="left-group">
+                <!-- <div *ngIf="message"
+                [style.background]="message.type == 'failed' ? '#721616' : message.type == 'success' ? 'darkseagreen' : ''"
+                class="alert">{{ message.message }}</div> -->
+                <div class="form-group">
+                    <label for="firstname">Firstname: </label>
+                    <input name="firstname" ngModel type="text" id="firstname" placeholder="Thomas" required />
+                </div>
+                <div class="form-group">
+                    <label for="insertion">Insertion: </label>
+                    <input name="insertion" ngModel type="text" id="insertion" placeholder="van der" />
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Lastname: </label>
+                    <input name="lastname" ngModel type="text" id="lastname" placeholder="Linten" required />
+                </div>
+                <div class="form-group">
+                    <label for="phonenumber">Phonenumber: </label>
+                    <input name="phonenumber" ngModel type="tel" id="phonenumber" placeholder="0612345678" required />
+                </div>
+                <div class="form-group">
+                    <label for="streetname">Streetname: </label>
+                    <input name="streetname" ngModel type="text" id="streetname" placeholder="Dirtystreet" required />
+                </div>
+                <div class="form-group">
+                    <label for="housenumber">Housenumber: </label>
+                    <input name="housenumber" ngModel type="number" id="housenumber" placeholder="67" required />
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">Zipcode: </label>
+                    <input name="zipcode" ngModel type="text" id="zipcode" placeholder="1234AB" required />
+                </div>
+            </div>
+            <div class="right-group">
+                <div class="form-group">
+                    <label for="email">Email: </label>
+                    <input name="email" ngModel type="email" id="email" placeholder="thomasvdlinten@hotmail.com"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="username">Username: </label>
+                    <input name="username" ngModel type="text" id="username" placeholder="peepoweirdo1337" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input name="password" (focus)="passwordValidate($event)" (keyup)="passwordValidate($event)"
+                        [(ngModel)]="password" type="password" id="password" placeholder="Password" required />
+                    <i class="revealEye" [ngClass]="!showPassword ? 'far fa-eye' : 'far fa-eye-slash'"
+                        (click)="revealPassword()"></i>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Re-type your password: </label>
+                    <input name="confirm_password" (focus)="passwordMatch(password, confirmedPassword)"
+                        (keyup)="passwordMatch(password, confirmedPassword)" [(ngModel)]="confirmedPassword"
+                        type="password" id="confirmPassword" placeholder="Repeat wachtwoord" required />
+                </div>
+                <div class="password-rate">
+                    <div class="rate-bar">
+                        <div *ngIf="warningMessages.length > 0">
+                            <p *ngFor="let rate of [].constructor(maxRates - warningMessages.length); let i = index"><i
+                                    class="line correct"></i></p>
+                        </div>
+                    </div>
+                    <div class="headsupMessage" *ngIf="warningMessages.length == 0 && password.length > 0">
+                        {{headsupMessage}}</div>
+                    <div [style.display]="warningMessages.length > 0 ? 'block' : 'none'" class="message-box">
+                        <p *ngFor="let message of warningMessages">&#8594; {{ message }}</p>
+                    </div>
+                </div>
+                <button type="submit" class="register">Register</button>
+            </div>
+        </form>
+        <hr>
+        <div class="alternative">
+            <p>Already have an account? Sign in.</p>
+            <button routerLink="/login" class="login">Login</button>
+        </div>
+    </div>
+</div>

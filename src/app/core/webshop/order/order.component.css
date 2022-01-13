@@ -1,0 +1,13 @@
+.container {
+    padding: 25px 0;
+}
+
+.order{
+    display: flex;
+    flex-direction: row;
+    max-width: 1080px;
+    margin: auto;
+    border: 2px solid darkseagreen;
+    padding: 50px;
+    border-radius: 15px;
+}

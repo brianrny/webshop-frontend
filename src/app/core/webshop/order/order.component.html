@@ -1,1 +1,48 @@
-<p>order works!</p>
+<div>
+    <app-banner>
+        <h1>Order</h1>
+    </app-banner>
+    <app-previous></app-previous>
+    <div class="container">
+        <div class="order">
+            <form #info="ngForm" (ngSubmit)="onFormSubmit(info)">
+                <!-- <div *ngIf="message"
+                    [style.background]="message.type == 'failed' ? '#a11a1a' : message.type == 'success' ? 'darkseagreen' : ''"
+                    class="alert">{{ message.message }}</div> -->
+                <div class="form-group">
+                    <label for="username">Firstname</label>
+                    <input name="username" ngModel type="text" id="username" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Insertion</label>
+                    <input name="password" ngModel type="password" id="password" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Lastname</label>
+                    <input name="password" ngModel type="password" id="password" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Username</label>
+                    <input name="password" ngModel type="password" id="password" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input name="password" ngModel type="password" id="password" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Tussenvoegsel</label>
+                    <input name="password" ngModel type="password" id="password" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Tussenvoegsel</label>
+                    <input name="password" ngModel type="password" id="password" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Tussenvoegsel</label>
+                    <input name="password" ngModel type="password" id="password" required />
+                </div>
+                <button type="submit" class="login">Door gaan</button>
+            </form>
+        </div>
+    </div>
+</div>

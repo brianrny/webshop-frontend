@@ -96,10 +96,12 @@
     }
 
     .nav-list {
-        display: grid;
+        display: flex;
+        justify-content: baseline;
+
+        flex-direction: column;
+
         grid-gap: 20px;
-        justify-content: center;
-        align-items: center;
 
         height: calc(100vh - 75px);
         width: 100%;
@@ -110,20 +112,12 @@
         left: 0;
         
         background-color: white;
-
-        grid-template-columns: 1fr;
-    }
-
-    .nav-item {
-        height: 100%;
     }
 
     .nav-item a{
         display: flex;
         justify-content: center;
         align-items: center;
-        
-        height: 100%;
     }
     
     .nav-group > div > * {

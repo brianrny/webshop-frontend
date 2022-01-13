@@ -9,10 +9,8 @@ import { WebshopService } from '../services/webshop.service';
   styleUrls: ['./webshop.component.css']
 })
 export class WebshopComponent implements OnInit {
-  public webshopService: WebshopService
 
-  constructor(webshopService: WebshopService) { 
-    this.webshopService = webshopService;
+  constructor(public webshopService: WebshopService) {
   }
 
   ngOnInit(): void {

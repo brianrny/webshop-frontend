@@ -15,7 +15,7 @@ export class LoginService {
   constructor(private http: HttpClient, private localstorageService: LocalstorageService, private router: Router, private userService: UserService) {
     this.is_redirected = false;
 
-    if (this.localstorageService.getStoredToken() != null) {
+    if (this.localstorageService.getStorageItem("webshop_stored_token") != null) {
       this.authenticated = true;
     } else {
       this.authenticated = false;
@@ -33,11 +33,29 @@ export class LoginService {
     setTimeout(() => this.router.navigate(['/logout']))
   }
 
+  register(data: any) {
+    let userInformation = {
+      firstname: data.value.firstname,
+      insertion: data.value.insertion,
+      lastname: data.value.lastname,
+      phonenumber: data.value.phonenumber,
+      streetname: data.value.streetname,
+      housenumber: data.value.housenumber,
+      zipcode: data.value.zipcode,
+      email: data.value.email,
+      username: data.value.username,
+      password: data.value.password,
+      role: "USER"
+    }
+
+    return this.http.post(`${environment.BASE_API_URL}` + 'register', userInformation);
+  }
+
   createSession(data: any) {
     let { jwtToken, userid } = data;
 
-    this.localstorageService.setStoredToken(jwtToken.token)
-    this.localstorageService.setStoredUserId(userid)
+    this.localstorageService.setStorageItem("webshop_stored_token", jwtToken.token);
+    this.localstorageService.setStorageItem("webshop_user_id", userid);
 
     this.userService.initializeUser(userid)
 
@@ -55,8 +73,8 @@ export class LoginService {
   }
 
   destroySession() {
-    this.localstorageService.removeStoredToken();
-    this.localstorageService.removeStoredUserId();
+    this.localstorageService.removeStorageItem("webshop_stored_token");
+    this.localstorageService.removeStorageItem("webshop_user_id");
 
     this.userService.uninitializeUser()
 

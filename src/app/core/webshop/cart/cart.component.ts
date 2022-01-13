@@ -37,6 +37,11 @@ export class CartComponent implements OnInit {
       amount = 0;
     }
 
+    if (amount < 0) {
+      this.onDeleteCartItem(cartitem);
+      return;
+    }
+
     this.localStorageService.changeProductAmount(cartitem, amount);
   }
 

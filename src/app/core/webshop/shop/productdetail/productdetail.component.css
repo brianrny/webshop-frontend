@@ -55,3 +55,31 @@
     background: black;
     color: white;
 }
+
+@media screen and (max-width: 1080px){
+    .product{
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product {
+        flex-direction: column;
+    }
+
+    .product__details {
+        margin-left: 0;
+    }
+
+    .product__details > * {
+        margin-top: 10px;
+    }
+
+    .product__image {
+        max-width: inherit; 
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}

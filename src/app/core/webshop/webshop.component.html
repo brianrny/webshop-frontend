@@ -1,8 +1,8 @@
 <div>
-    <div *ngIf="!webshopService.products">
+    <div *ngIf="webshopService.getProducts()?.length == 0">
         <h1>No products available.</h1>
     </div>
     <div *ngIf="webshopService.isLoaded">
-        <app-shop [products]="webshopService.products"></app-shop>
+        <app-shop [products]="webshopService.getProducts()"></app-shop>
     </div>
 </div>

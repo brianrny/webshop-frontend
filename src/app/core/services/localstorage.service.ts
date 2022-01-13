@@ -107,7 +107,7 @@ export class LocalstorageService {
   setCartLocalStorage(): void {
     this.uniqueList = [...new Map(this.currentList.map((item) => [item['product']!.id, item])).values()]
 
-    setTimeout(() => { localStorage.setItem("webshop_stored_cart", JSON.stringify(this.uniqueList)) }, 50);
+    this.setStorageItem("webshop_stored_cart", JSON.stringify(this.uniqueList))
   }
 
   removeProductFromCart(targetproduct: ProductItem): void {
@@ -120,39 +120,18 @@ export class LocalstorageService {
     this.setCartLocalStorage();
   }
 
-  getRememberedUsername(): string {
-    return localStorage.getItem("webshop_stored_username")!
+  // webshop_stored_username
+  // webshop_stored_token
+  // webshop_user_id
+  getStorageItem(name: string) {
+    return localStorage.getItem(name);
   }
 
-  setRememberedUsername(username: string): void {
-    localStorage.setItem("webshop_stored_username", username)
+  setStorageItem(name: string, data: any) {
+    localStorage.setItem(name, data)
   }
 
-  removeRemeberedUsername(): void {
-    localStorage.removeItem("webshop_stored_username");
-  }
-
-  getStoredToken(): string {
-    return localStorage.getItem("webshop_stored_token")!
-  }
-
-  setStoredToken(token: string): void {
-    localStorage.setItem("webshop_stored_token", token)
-  }
-
-  removeStoredToken(): void {
-    localStorage.removeItem("webshop_stored_token");
-  }
-
-  getStoredUserId(): string {
-    return localStorage.getItem("webshop_user_id")!;
-  }
-
-  setStoredUserId(id: number): void {
-    localStorage.setItem("webshop_user_id", id.toString())
-  }
-
-  removeStoredUserId(): void {
-    localStorage.removeItem("webshop_user_id");
+  removeStorageItem(name: string) {
+    localStorage.removeItem(name)
   }
 }

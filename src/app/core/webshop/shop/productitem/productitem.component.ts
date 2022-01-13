@@ -19,9 +19,9 @@ export class ProductitemComponent implements OnInit {
   }
 
   onAddToCart(product_id: number) {
-    const targetProduct = this.webshopService.getProductById(product_id);
-
-    this.localStorageService.addProductToCart(targetProduct);
+    this.webshopService.getProductById(product_id).subscribe(data => {
+      this.localStorageService.addProductToCart(data);
+    });
   }
 
   onProductClick(product_id: number) {

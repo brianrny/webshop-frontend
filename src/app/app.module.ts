@@ -10,7 +10,7 @@ import { LayoutComponent } from './core/layout/layout.component';
 import { NavigationComponent } from './core/navigation/navigation.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './core/footer/footer.component';
-import { OrderComponent } from './core/dashboard/order/order.component';
+import { AdminOrderComponent } from './core/dashboard/order/adminorder.component';
 import { OrderdetailsComponent } from './core/dashboard/orderdetails/orderdetails.component';
 import { UserComponent } from './core/dashboard/user/user.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
@@ -19,13 +19,14 @@ import { LoginComponent } from './core/webshop/login/login.component';
 import { CartComponent } from './core/webshop/cart/cart.component';
 import { ShopComponent } from './core/webshop/shop/shop.component';
 import { ProductitemComponent } from './core/webshop/shop/productitem/productitem.component';
-import { FormComponent } from './core/webshop/login/form/form.component';
 import { BannerComponent } from '../shared/components/ui/banner/banner.component';
 import { ProductdetailComponent } from './core/webshop/shop/productdetail/productdetail.component';
 import { PreviousComponent } from '../shared/components/ui/previous/previous.component';
 import { HttpConfigInterceptor } from './core/interceptors/httpconfig.interceptor';
 import { LogoutComponent } from './core/webshop/logout/logout.component';
+import { OrderComponent } from './core/webshop/order/order.component';
 import AuthGuard from './core/services/authguard.service';
+import { RegisterComponent } from './core/webshop/register/register.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +36,9 @@ import AuthGuard from './core/services/authguard.service';
     LayoutComponent,
     NavigationComponent,
     FooterComponent,
-    OrderComponent,
+    AdminOrderComponent,
     OrderdetailsComponent,
+    OrderComponent,
     UserComponent,
     DashboardComponent,
     WebshopComponent,
@@ -44,11 +46,11 @@ import AuthGuard from './core/services/authguard.service';
     CartComponent,
     ShopComponent,
     ProductitemComponent,
-    FormComponent,
     BannerComponent,
     ProductdetailComponent,
     PreviousComponent,
     LogoutComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

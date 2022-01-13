@@ -1,37 +1,41 @@
-import { Injectable } from '@angular/core';
-import { plainToInstance } from 'class-transformer';
-import { api_config } from 'src/shared/models/api/api-config';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Product } from 'src/shared/models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WebshopService {
+export class WebshopService implements OnInit {
   products!: Product[];
   isLoaded: boolean;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.isLoaded = false;
 
-    this.getAllProducts();
+    this.getAllProducts().subscribe(data => {
+      this.setProducts(data)
+
+      this.isLoaded = true;
+    });
   }
 
-  getProductById(id: number): Product {
-    const [product] = this.products.filter(product => product.id == id);
+  ngOnInit(): void { }
 
-    return product;
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.BASE_API_URL}` + 'product');
   }
 
-  async getAllProducts() {
-    this.products = await this.fetchAllProducts();
+  getProductById(id: number) {
+    return this.http.get<Product>(`${environment.BASE_API_URL}` + 'product/' + `${id}`);
   }
 
-  async fetchAllProducts(): Promise<Product[]> {
-    const response = await api_config.get("product/");
-    const data: Object[] = response.data;
+  getProducts() {
+    return this.products;
+  }
 
-    this.isLoaded = true;
-
-    return plainToInstance(Product, data, { strategy: 'excludeAll' });
+  setProducts(products: Product[]) {
+    this.products = products;
   }
 }

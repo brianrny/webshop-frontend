@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LocalstorageService, ProductItem } from 'src/app/core/services/localstorage.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LocalstorageService } from 'src/app/core/services/localstorage.service';
 import { WebshopService } from 'src/app/core/services/webshop.service';
 import { Product } from 'src/shared/models/product.model';
 
@@ -19,26 +19,30 @@ export class ProductdetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, webshopService: WebshopService, public localstorageService: LocalstorageService) {
     this.webshopService = webshopService
-  }
 
-  ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.currentProductId = params['id'];
     })
 
-    this.webshopService.fetchAllProducts()
+    this.webshopService.getProductById(this.currentProductId).subscribe(data => {
+      this.setProduct(data)
 
-    setTimeout(() => {
-      this.product = this.webshopService.getProductById(this.currentProductId);
+      this.isLoaded = true;
+    })
+  }
 
-      if (this.product != null || this.product != undefined) {
-        console.log(this.product)
-        this.isLoaded = true;
-      }
-    }, 50)
+  ngOnInit(): void {
   }
 
   onAddToCart(product: Product) {
     this.localstorageService.addProductToCart(product);
+  }
+
+  setProduct(product: Product) {
+    this.product = product
+  }
+
+  getProduct() {
+    return this.product;
   }
 }
