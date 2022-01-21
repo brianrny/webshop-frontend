@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { LocalstorageService } from 'src/app/core/services/localstorage.service';
+import { ProductService } from 'src/app/core/services/product.service';
 import { Product } from 'src/shared/models/product.model';
 import { WebshopService } from '../../../services/webshop.service';
 
@@ -13,13 +15,14 @@ export class ProductitemComponent implements OnInit {
 
   @Input() productitem!: Product;
 
-  constructor(private webshopService: WebshopService, private localStorageService: LocalstorageService, private router: Router) { }
+  constructor(public authService: AuthService, private productService: ProductService, private localStorageService: LocalstorageService, private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
   onAddToCart(product_id: number) {
-    this.webshopService.getProductById(product_id).subscribe(data => {
+    this.productService.getProductById(product_id).subscribe(data => {
       this.localStorageService.addProductToCart(data);
     });
   }

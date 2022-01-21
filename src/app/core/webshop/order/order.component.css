@@ -1,3 +1,7 @@
+.customer-details, .order-details{
+    flex: 1;
+}
+
 .container {
     padding: 25px 0;
 }
@@ -10,4 +14,62 @@
     border: 2px solid darkseagreen;
     padding: 50px;
     border-radius: 15px;
+
+    gap: 20px;
+}
+
+.detail > div{
+    display: flex;
+}
+
+.order-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+
+}
+
+.actions .action:nth-child(1){
+    margin-left: auto;
+}
+
+.group {
+    display: flex;
+    width: 100%;
+
+    padding: 10px 0;
+}
+
+.group > * {
+    flex: 1;
+}
+
+.group input {
+    padding: 10px;
+}
+
+.action {
+    width: max-content;
+
+    border: 2px solid darkseagreen;
+    background: white;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+
+    transition: 0.25s all ease-in-out;
+}
+
+.action:hover {
+    background-color: darkseagreen;
+    color: white;
+}
+
+.header {
+    margin-bottom: 20px;
 }

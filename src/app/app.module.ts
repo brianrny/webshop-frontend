@@ -27,12 +27,17 @@ import { LogoutComponent } from './core/webshop/logout/logout.component';
 import { OrderComponent } from './core/webshop/order/order.component';
 import AuthGuard from './core/services/authguard.service';
 import { RegisterComponent } from './core/webshop/register/register.component';
+import { ConfirmComponent } from './core/webshop/confirm/confirm.component';
+import { EditinformationComponent } from './core/webshop/editinformation/editinformation.component';
+import { DetailsComponent } from './core/webshop/order/details/details.component';
+import { UserordersComponent } from './core/webshop/userorders/userorders.component';
+import { UserorderproductComponent } from './core/webshop/userorders/userorderproduct/userorderproduct.component';
+import { ItemComponent } from './core/dashboard/product/item/item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    ProductComponent,
     LayoutComponent,
     NavigationComponent,
     FooterComponent,
@@ -51,6 +56,13 @@ import { RegisterComponent } from './core/webshop/register/register.component';
     PreviousComponent,
     LogoutComponent,
     RegisterComponent,
+    ConfirmComponent,
+    EditinformationComponent,
+    DetailsComponent,
+    UserordersComponent,
+    UserorderproductComponent,
+    ProductComponent,
+    ItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { Product } from 'src/shared/models/product.model';
 import { LocalstorageService, ProductItem } from '../../services/localstorage.service';
-import { LoginService } from '../../services/login.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +11,7 @@ import { LoginService } from '../../services/login.service';
 export class CartComponent implements OnInit {
   products!: ProductItem[];
 
-  constructor(public localStorageService: LocalstorageService, private loginService: LoginService, private router: Router) {
+  constructor(public localStorageService: LocalstorageService, private authService: AuthService, private router: Router) {
     this.products = this.localStorageService.getParsedCartItems()
   }
 
@@ -54,10 +52,10 @@ export class CartComponent implements OnInit {
   }
 
   proceedToCheckout() {
-    if (this.loginService.isAuthenticated()) {
+    if (this.authService.isAuthenticated()) {
       this.router.navigate(['/order'])
     } else {
-      this.loginService.setIsRedirected(true);
+      this.authService.setIsRedirected(true);
 
       this.router.navigate(['/login'])
     }

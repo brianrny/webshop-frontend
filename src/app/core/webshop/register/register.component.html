@@ -5,11 +5,12 @@
     </app-banner>
     <app-previous></app-previous>
     <div class="container">
+        <div *ngIf="registeredMessage!.type != undefined" class="registered-message"
+            [style.background]="registeredMessage!.type == 'success' ? 'darkseagreen' :  '#721616'">
+            <p>{{ registeredMessage!.message }}</p>
+        </div>
         <form #info="ngForm" (ngSubmit)="onFormSubmit(info)" [noValidate]="false">
             <div class="left-group">
-                <!-- <div *ngIf="message"
-                [style.background]="message.type == 'failed' ? '#721616' : message.type == 'success' ? 'darkseagreen' : ''"
-                class="alert">{{ message.message }}</div> -->
                 <div class="form-group">
                     <label for="firstname">Firstname: </label>
                     <input name="firstname" ngModel type="text" id="firstname" placeholder="Thomas" required />
@@ -53,7 +54,7 @@
                     <label for="password">Password: </label>
                     <input name="password" (focus)="passwordValidate($event)" (keyup)="passwordValidate($event)"
                         [(ngModel)]="password" type="password" id="password" placeholder="Password" required />
-                    <i class="revealEye" [ngClass]="!showPassword ? 'far fa-eye' : 'far fa-eye-slash'"
+                    <i class="reveal-eye" [ngClass]="!showPassword ? 'far fa-eye' : 'far fa-eye-slash'"
                         (click)="revealPassword()"></i>
                 </div>
                 <div class="form-group">
@@ -69,7 +70,7 @@
                                     class="line correct"></i></p>
                         </div>
                     </div>
-                    <div class="headsupMessage" *ngIf="warningMessages.length == 0 && password.length > 0">
+                    <div class="headsup-message" *ngIf="warningMessages.length == 0 && password.length > 0">
                         {{headsupMessage}}</div>
                     <div [style.display]="warningMessages.length > 0 ? 'block' : 'none'" class="message-box">
                         <p *ngFor="let message of warningMessages">&#8594; {{ message }}</p>

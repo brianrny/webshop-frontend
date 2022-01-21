@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BASE_API_URL: "https://lazy-crab-16.loca.lt/api/"
+  BASE_API_URL: "https://cold-insect-5.loca.lt/api/"
 };

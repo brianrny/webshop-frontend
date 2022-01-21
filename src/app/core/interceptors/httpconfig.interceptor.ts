@@ -5,10 +5,10 @@ import { LocalstorageService } from "../services/localstorage.service";
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-    constructor(private localstorageService: LocalstorageService) { }
+    constructor(private localStorageService: LocalstorageService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const token = this.localstorageService.getStorageItem("webshop_stored_token");
+        const token = this.localStorageService.getStorageItem("webshop_stored_token");
 
         if (token != 'null' || token != null) {
             req = req.clone({ headers: req.headers.set('Authorization', `Bearer ${token}`) })
@@ -17,7 +17,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         return next.handle(req).pipe(
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
-                    // this.userService.initializeUser(event.body.id)
+
                 }
                 return event;
             }),

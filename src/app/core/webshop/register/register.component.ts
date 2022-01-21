@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { map } from 'rxjs';
-import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +11,7 @@ export class RegisterComponent implements OnInit {
   warningMessages: string[];
   headsupMessage?: string;
 
-  registeredMessage?: string;
+  registeredMessage?: { type: string | undefined, message: string };
 
   password: string;
   confirmedPassword: string;
@@ -23,7 +22,7 @@ export class RegisterComponent implements OnInit {
   rate: number;
   maxRates: number = 5;
 
-  constructor(private loginService: LoginService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.rate = 0;
     this.warningMessages = [];
 
@@ -34,7 +33,7 @@ export class RegisterComponent implements OnInit {
 
     this.passwordsMatch = false;
 
-    this.registeredMessage = '';
+    this.registeredMessage = { type: undefined, message: "" };
 
 
     if (this.warningMessages.length == 0) {
@@ -45,12 +44,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // passwordMatchValidator(password: string, confirmedPassword: string) {
-  //   if (password !== confirmedPassword) this.messages?.push("The passwords do not match.")
-
-  //   if (password == confirmedPassword) return
-  // }
-
   passwordValidate(event: Event) {
     let messagesList = [];
     let passwordValue = (event.target as HTMLInputElement).value;
@@ -59,28 +52,22 @@ export class RegisterComponent implements OnInit {
       messagesList.push("Your password contains whitespace.")
     }
 
-    if (!passwordValue.search(/^.{10,16}$/)) {
-    } else {
-      messagesList.push("Your password doesnt contain 10 or more characters.")
+    if (passwordValue.search(/^.{10,32}$/)) {
+      messagesList.push("Your password doesnt contain atleast 10 characters or has more than 32 characters.")
     }
-
-    if (!passwordValue.search(/^(?=.*[A-Z])/)) {
-    } else {
+    if (passwordValue.search(/^(?=.*[A-Z])/)) {
       messagesList.push("Your password doesnt contain a capitalized character.")
     }
 
-    if (!passwordValue.search(/^(?=.*[a-z])/)) {
-    } else {
+    if (passwordValue.search(/^(?=.*[a-z])/)) {
       messagesList.push("Your password doesnt contain a small character.")
     }
 
-    if (!passwordValue.search(/^(?=.*[0-9])/)) {
-    } else {
+    if (passwordValue.search(/^(?=.*[0-9])/)) {
       messagesList.push("Your password doesnt contain a number.")
     }
 
-    if (!passwordValue.search(/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹])/)) {
-    } else {
+    if (passwordValue.search(/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹])/)) {
       messagesList.push("Your password doesnt contain a special character.")
     }
 
@@ -106,12 +93,31 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  onFormSubmit(data: any) {
+  onFormSubmit(formdata: any) {
     if (this.warningMessages.length == 0 && this.passwordsMatch) {
-      this.loginService.register(data).subscribe(
-        data => console.log(data),
-        err => console.error(err.error.text),
-        () => console.log("finished")
+      this.authService.register(formdata).subscribe(
+        () => null,
+        (err: { error: { text: any; }; }) => {
+          let message = err.error.text;
+
+          if (message = "User has been created.") {
+            this.registeredMessage = { type: "success", message: "You have succesfully registered." }
+
+            this.authService.login({ username: formdata.value.username, password: formdata.value.password }).subscribe(
+              (res: any) => this.authService.createSession(res),
+              (err: any) => console.error(err),
+              () => null
+            );
+
+            setTimeout(() => {
+              this.router.navigate(['/']);
+            }, 1000)
+
+          } else {
+            this.registeredMessage = { type: "failed", message: "Something went wrong, try again or check if you filled in the required fields." }
+          }
+        },
+        () => null
       )
     }
   }

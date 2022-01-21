@@ -3,6 +3,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from 'src/shared/models/product.model';
+import { ProductService } from './product.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,10 @@ export class WebshopService implements OnInit {
   products!: Product[];
   isLoaded: boolean;
 
-  constructor(private http: HttpClient) {
+  constructor(private productService: ProductService) {
     this.isLoaded = false;
 
-    this.getAllProducts().subscribe(data => {
+    this.productService.getAllProducts().subscribe(data => {
       this.setProducts(data)
 
       this.isLoaded = true;
@@ -23,19 +24,11 @@ export class WebshopService implements OnInit {
 
   ngOnInit(): void { }
 
-  getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.BASE_API_URL}` + 'product');
-  }
-
-  getProductById(id: number) {
-    return this.http.get<Product>(`${environment.BASE_API_URL}` + 'product/' + `${id}`);
+  setProducts(products: Product[]) {
+    this.products = products;
   }
 
   getProducts() {
     return this.products;
-  }
-
-  setProducts(products: Product[]) {
-    this.products = products;
   }
 }

@@ -5,12 +5,14 @@
         <button class="nav-collapse" (click)="onCollapse()"><i class="fas fa-bars"></i></button>
 
         <ul class="nav-list d-flex" (ngModel)="collapsed" [class.collapsed]="collapsed">
-            <li *ngIf="userService.isAdmin() == true" class="nav-item"><a routerLink="/dashboard">Dashboard</a></li>
-            <li *ngIf="loginService.isAuthenticated()" class="nav-item"><a routerLink="/order">Orders</a></li>
-            <li class="nav-item cart"><a routerLink="/cart"><i class="fas fa-shopping-cart"></i>Cart ({{
+            <li *ngIf="authService.isAdmin() == true" class="nav-item"><a routerLink="/dashboard">Dashboard</a></li>
+            <li *ngIf="authService.isAuthenticated() && !authService.isAdmin()" class="nav-item"><a
+                    routerLink="/orders">Orders</a></li>
+            <li *ngIf="!authService.isAdmin()" class="nav-item cart"><a routerLink="/cart"><i
+                        class="fas fa-shopping-cart"></i>Cart ({{
                     localStorageService.getTotalAmountItemsOfCart() || 0 }})</a></li>
-            <li *ngIf="!loginService.isAuthenticated()" class="nav-item action"><a routerLink="/login">Login</a></li>
-            <li *ngIf="loginService.isAuthenticated()" class="nav-item action"><a routerLink="/logout">Logout</a></li>
+            <li *ngIf="!authService.isAuthenticated()" class="nav-item action"><a routerLink="/login">Login</a></li>
+            <li *ngIf="authService.isAuthenticated()" class="nav-item action"><a routerLink="/logout">Logout</a></li>
         </ul>
     </div>
 </nav>

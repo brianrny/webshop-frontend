@@ -7,8 +7,8 @@
         <div class="cart__overlay">
             <a [routerLink]="'/product/' + productitem.id">View product</a>
         </div>
-        <div class="actions">
-            <button (click)="onAddToCart(productitem.id)"><i class="fas fa-plus"></i></button>
+        <div *ngIf="!authService.isAdmin()" class="actions">
+            <button (click)="onAddToCart(productitem.id!)"><i class="fas fa-plus"></i></button>
         </div>
     </div>
 </div>

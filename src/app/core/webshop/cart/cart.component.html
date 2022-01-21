@@ -1,9 +1,7 @@
-<div class="wrapper">
+<div style="min-height: calc(100vh - 150px);" class="wrapper">
     <app-banner>
         <h1>Cart</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi ad maxime illum assumenda eum deleniti unde
-            delectus repellat maiores hic, consequatur accusantium, laudantium ducimus. Qui distinctio quisquam ipsa
-            totam accusamus. </p>
+        <p>Here is an overview of your shopping cart, you can adjust the quantity on the right.</p>
     </app-banner>
     <div class="container">
         <ul>
@@ -13,7 +11,7 @@
                 <p class="product__description">{{product.product!.description}}</p>
                 <p class="product__price">€ {{ product.product!.price * product.amount }}</p>
                 <div class="actions">
-                    <button (click)="navigateToProduct(product.product!.id)"><i class="fas fa-eye"></i></button>
+                    <button (click)="navigateToProduct(product.product.id!)"><i class="fas fa-eye"></i></button>
                     <input min="0" max="99" type="text" inputmode="numeric" pattern="[0-9]*"
                         (change)="onAmountChange(product, $event)" [value]="product.amount" />
                     <button (click)="onDeleteCartItem(product)"><i class="fas fa-trash-alt"></i></button>

@@ -11,15 +11,31 @@
     border: 20px solid darkseagreen;
 }
 
+.banner ::ng-deep * {
+    padding: 15px 0 ;
+}
+
+.banner ::ng-deep > *{
+    color: black;
+    padding: 16px 42px;
+    text-align: center;
+}
+
+.banner ::ng-deep h1 {
+    font-size: 64px;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+
+.banner ::ng-deep p {
+    border-top: 2px solid black;
+    max-width: 350px;
+}
+
 .banner-left{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex: 1
-}
-
-.banner ::ng-deep > *{
-    color: black;
-    padding: 16px 42px;
 }

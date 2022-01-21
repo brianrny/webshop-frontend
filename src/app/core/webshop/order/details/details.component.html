@@ -1,0 +1,19 @@
+<div class="container">
+    <h2 class="header">Order details</h2>
+    <div *ngIf="products.length > 0" class="detail">
+
+        <div class="group" *ngFor="let productitem of products; let i = index">
+            <div class="col-1">
+                <h4>{{ productitem.amount }}x</h4>
+            </div>
+            <div class="col-4">
+                <p>{{ productitem.product!.description }}</p>
+            </div>
+            <div class="col-1">
+                <p>€ {{ roundNumber((productitem.amount * productitem.product!.price)) }}</p>
+            </div>
+        </div>
+    </div>
+    <h3 *ngIf="products.length == 0">Add products to your shoppingcart.</h3>
+    <h3 *ngIf="products.length > 0" class="total-price">Total price: € {{ totalPrice}} </h3>
+</div>

@@ -1,0 +1,50 @@
+
+.product__image {
+
+    width: 100px;
+    height: 100px;
+
+    object-fit: cover;
+}
+
+.container { 
+    width: 300px;
+}
+
+.container:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1;
+}
+
+.record {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border-radius: 15px;
+    border: 2px solid black;
+
+    margin: 20px;
+    padding: 25px 0;
+
+    gap: 20px;
+
+    transition: 0.35s all ease-in-out;
+}
+
+.record:hover{
+    background: darkseagreen;
+}

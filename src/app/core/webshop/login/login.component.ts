@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalstorageService } from '../../services/localstorage.service';
-import { LoginService } from '../../services/login.service';
+import { AuthService } from '../../services/auth.service';
 
 export interface Message {
   type: string,
@@ -17,7 +17,7 @@ export interface Message {
 export class LoginComponent implements OnInit {
   message!: Message;
 
-  constructor(public localstorageService: LocalstorageService, public loginService: LoginService, private router: Router) {
+  constructor(public localstorageService: LocalstorageService, public authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -28,15 +28,15 @@ export class LoginComponent implements OnInit {
     let password = data.value.password;
     let remember = data.value.remember;
 
-    // Meer specifiekere check voor authenticatie
     if (username != '' && password != '') {
-      this.loginService.login(data).subscribe(
+      this.authService.login({ username, password }).subscribe(
         res => {
           this.message = { type: "success", message: "Succesfully logged in. Redirecting in 2 seconds..." }
-          this.loginService.createSession(res);
+          this.authService.createSession(res);
         },
         err => {
-          this.message = { type: "failed", message: "Login failed, try again.", statuscode: err.error.status }
+          this.message = { type: "failed", message: "Login failed, try again.", statuscode: err.error.text }
+          console.error(err.error);
         }
       )
     } else {

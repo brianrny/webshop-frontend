@@ -1,0 +1,11 @@
+<div class="container">
+    <app-banner>
+        <h1>User Orders</h1>
+        <p>View all your previous orders.</p>
+    </app-banner>
+    <div class="order-list">
+        <div style="max-width: 1280px; margin: 0 auto; padding: 10px 20px 30px 20px;">
+            <app-userorderproduct *ngFor="let order of orders; let i = index" [order]="order">
+            </app-userorderproduct>
+        </div>
+    </div>

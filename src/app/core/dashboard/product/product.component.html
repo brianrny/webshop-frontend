@@ -1,1 +1,12 @@
-<p>product works!</p>
+<div style="min-height: calc(100vh - 150px);" class="container">
+    <app-banner>
+        <h1>Manage products</h1>
+        <p>Manage products bruh</p>
+    </app-banner>
+    <div class="actions">
+        <button (click)="addProduct()" class="addbtn">Add product</button>
+    </div>
+    <div class="product-list">
+        <app-item *ngFor="let product of products; let i = index" [product]=product></app-item>
+    </div>
+</div>

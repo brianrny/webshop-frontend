@@ -1,0 +1,34 @@
+<div class="record" (click)="changeCollapsed()">
+    <p>Order id: #{{ order.id }}</p>
+    <div class="products" *ngIf="isLoaded">
+        <div *ngIf="collapse">
+            <div class="container" *ngFor="let orderdetail of orderdetails">
+                <div class="product card">
+                    <img class="product__image" [src]="orderdetail.product.imageUrl" [alt]="orderdetail.product.name">
+                    <div class="card-details">
+                        <b>Amount: {{orderdetail.amount}}</b>
+                        <b>Price: € {{orderdetail.product.price}}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!collapse" class="container">
+            <div class="product card">
+                <img class="product__image" [src]="firstorderdetail.product.imageUrl"
+                    [alt]="firstorderdetail.product.name">
+                <div class="card-details">
+                    <b>Amount: {{firstorderdetail.amount}}</b>
+                    <b>Price: € {{firstorderdetail.product.price}}</b>
+                </div>
+            </div>
+        </div>
+        <h1 *ngIf="!isLoaded">Orders are loading...</h1>
+    </div>
+    <div class="details">
+        <p>Total price: € {{ order.price }}</p>
+        <p>Orderdate: {{ order.orderdate }}</p>
+    </div>
+    <div class="actions">
+        <i *ngIf="orderdetails.length > 1 " [ngClass]="collapse ? 'fas fa-chevron-down' : 'fas fa-chevron-up'"></i>
+    </div>
+</div>

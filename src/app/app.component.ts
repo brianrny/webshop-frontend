@@ -1,6 +1,8 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import UserService from './core/services/user.service';
+import { Component } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
+export let browserRefresh = false;
 
 @Component({
   selector: 'app-root',
@@ -10,5 +12,17 @@ import UserService from './core/services/user.service';
 export class AppComponent {
   title = 'Planten webshop';
 
-  constructor(private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  subscription: Subscription;
+
+  constructor(private router: Router) {
+    this.subscription = router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        browserRefresh = !router.navigated;
+      }
+    })
+
+    if (browserRefresh) {
+      this.router.navigate(["/"])
+    }
+  }
 }

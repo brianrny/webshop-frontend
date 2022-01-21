@@ -1,1 +1,12 @@
-<p>dashboard works!</p>
+<div style="min-height: calc(100vh - 150px);">
+    <app-banner>
+        <h1>Dashboard</h1>
+        <p>Manage products</p>
+    </app-banner>
+    <div class="container">
+        <h2>Actions</h2>
+        <div class="pagelist">
+            <button (click)="navigateToProducts()" routerLink="./product">Products</button>
+        </div>
+    </div>
+</div>

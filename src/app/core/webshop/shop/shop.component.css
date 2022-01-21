@@ -4,21 +4,6 @@
     color: black;
 }
 
-app-banner * {
-    padding: 15px 0 ;
-}
-
-app-banner h1{
-    font-size: 64px;
-    font-weight: normal;
-    letter-spacing: -1px;
-}
-
-app-banner p {
-    border-top: 2px solid black;
-    max-width: 350px;
-}
-
 .container{
     display: grid;
     grid-template-columns: repeat(auto-fit, calc(320px - 25.25px));

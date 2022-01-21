@@ -1,0 +1,38 @@
+<div class="card">
+    <p class="header">Product id #{{ product.id }}</p>
+    <img *ngIf="!editable" [src]="product.imageUrl" [alt]="product.name">
+    <div *ngIf="!editable" class="details">
+        <p class="header">Product details</p>
+        <p>{{ product.name }}</p>
+        <p>{{ product.description }}</p>
+        <p>€ {{ product.price }}</p>
+    </div>
+
+    <div *ngIf="editable" class="details">
+        <div class="group">
+            <p>Product image url</p>
+            <input type="text" [(ngModel)]="product.imageUrl">
+        </div>
+        <div class="group">
+            <p>Product name</p>
+            <input type="text" [(ngModel)]="product.name">
+        </div>
+        <div class="group">
+            <p>Product description</p>
+            <input type="text" [(ngModel)]="product.description">
+        </div>
+        <div class="group">
+            <p>Product price</p>
+            <input type="number" [(ngModel)]="product.price">
+        </div>
+    </div>
+
+    <div class="actions">
+        <p class="header">Actions</p>
+        <div>
+            <button *ngIf="!editable" (click)="toggleEditable()">Edit</button>
+            <button *ngIf="editable" (click)="onEditProduct(product.id, product)">Confirm</button>
+            <button (click)="onDeleteProduct(product.id)">Remove</button>
+        </div>
+    </div>
+</div>

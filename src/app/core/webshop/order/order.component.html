@@ -1,48 +1,44 @@
-<div>
+<div #scroll>
     <app-banner>
         <h1>Order</h1>
+        <p>Yuh</p>
     </app-banner>
     <app-previous></app-previous>
     <div class="container">
         <div class="order">
-            <form #info="ngForm" (ngSubmit)="onFormSubmit(info)">
-                <!-- <div *ngIf="message"
-                    [style.background]="message.type == 'failed' ? '#a11a1a' : message.type == 'success' ? 'darkseagreen' : ''"
-                    class="alert">{{ message.message }}</div> -->
-                <div class="form-group">
-                    <label for="username">Firstname</label>
-                    <input name="username" ngModel type="text" id="username" required />
+            <div class="customer-details">
+                <h2 class="header">Shipment details</h2>
+                <div class="detail">
+                    <form *ngIf="authService.isLoaded == true && authService.currentUser != undefined" #info="ngForm"
+                        (ngSubmit)="onFormSubmit(info)">
+                        <div
+                            *ngFor="let property of [].constructor(orderService.getOrderProperties()?.length); let i = index">
+                            <div class="group" *ngIf="!orderService.getEditable()">
+                                <p class="label">{{ orderService.getOrderProperties()![i].key }}: </p>
+                                <p>{{ orderService.getOrderProperties()![i].value }}</p>
+                            </div>
+                            <div class="group" *ngIf="orderService.getEditable()">
+                                <p class="label">{{ orderService.getOrderProperties()![i].key }}: </p>
+                                <input [(ngModel)]="orderService.getOrderProperties()![i].value"
+                                    [name]="orderService.getOrderProperties()![i].key" type="text"
+                                    [value]="orderService.getOrderProperties()![i].value" />
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button *ngIf="!orderService.getEditable()" class="action" (click)="toggleEditable()">Edit
+                                information</button>
+                            <button type="submit" *ngIf="orderService.getEditable()" class="action">Save</button>
+                        </div>
+                    </form>
+                    <h1 *ngIf="!authService.isLoaded == true">Is loading</h1>
                 </div>
-                <div class="form-group">
-                    <label for="password">Insertion</label>
-                    <input name="password" ngModel type="password" id="password" required />
+            </div>
+            <div class="order-details">
+                <app-details></app-details>
+                <div class="actions" *ngIf="length > 0">
+                    <button class="action" type="submit" (click)="createOrder()">Proceed</button>
                 </div>
-                <div class="form-group">
-                    <label for="password">Lastname</label>
-                    <input name="password" ngModel type="password" id="password" required />
-                </div>
-                <div class="form-group">
-                    <label for="password">Username</label>
-                    <input name="password" ngModel type="password" id="password" required />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input name="password" ngModel type="password" id="password" required />
-                </div>
-                <div class="form-group">
-                    <label for="password">Tussenvoegsel</label>
-                    <input name="password" ngModel type="password" id="password" required />
-                </div>
-                <div class="form-group">
-                    <label for="password">Tussenvoegsel</label>
-                    <input name="password" ngModel type="password" id="password" required />
-                </div>
-                <div class="form-group">
-                    <label for="password">Tussenvoegsel</label>
-                    <input name="password" ngModel type="password" id="password" required />
-                </div>
-                <button type="submit" class="login">Door gaan</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>

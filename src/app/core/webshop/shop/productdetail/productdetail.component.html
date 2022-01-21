@@ -1,6 +1,7 @@
 <div>
     <app-banner>
         <h1>Product details</h1>
+        <p>Detailed overview of the product</p>
     </app-banner>
     <app-previous></app-previous>
     <div class="container" *ngIf="isLoaded">
@@ -10,7 +11,7 @@
                 <h2 class="product__name">{{ product.name }}</h2>
                 <p class="product__description">{{ product.description }}</p>
                 <p class="product__price">€ {{ product.price }}</p>
-                <div class="actions">
+                <div class="actions" *ngIf="!authService.isAdmin()">
                     <button (click)="onAddToCart(product)">Add to cart</button>
                 </div>
             </div>

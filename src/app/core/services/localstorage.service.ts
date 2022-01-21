@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from 'src/shared/models/product.model';
 
 export interface ProductItem {
-  product?: Product;
+  product: Product;
   amount: number;
 }
 
@@ -122,7 +122,9 @@ export class LocalstorageService {
 
   // webshop_stored_username
   // webshop_stored_token
+  // webshop_stored_cart
   // webshop_user_id
+  // webshop_user_role
   getStorageItem(name: string) {
     return localStorage.getItem(name);
   }
