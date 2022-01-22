@@ -8,12 +8,14 @@ services:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: root
       POSTGRES_DB: webshop
+    ports:
+    - "5432:5432"
   front:
     container_name: IPRWC-Front
     image: brianrat2000/iprwc-front
     restart: always
     ports:
-      - "4200:4200"
+      - "80:80"
   back:
     container_name: IPRWC-Back
     image: brianrat2000/iprwc-back

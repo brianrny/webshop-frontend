@@ -14,6 +14,8 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.webshopService.products);
+
   }
 
 }

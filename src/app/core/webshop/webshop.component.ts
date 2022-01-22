@@ -14,6 +14,5 @@ export class WebshopComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 }

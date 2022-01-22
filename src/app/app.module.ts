@@ -33,6 +33,7 @@ import { DetailsComponent } from './core/webshop/order/details/details.component
 import { UserordersComponent } from './core/webshop/userorders/userorders.component';
 import { UserorderproductComponent } from './core/webshop/userorders/userorderproduct/userorderproduct.component';
 import { ItemComponent } from './core/dashboard/product/item/item.component';
+import { AddproductComponent } from './core/dashboard/product/addproduct/addproduct.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ItemComponent } from './core/dashboard/product/item/item.component';
     UserorderproductComponent,
     ProductComponent,
     ItemComponent,
+    AddproductComponent,
   ],
   imports: [
     BrowserModule,

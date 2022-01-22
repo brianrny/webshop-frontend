@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BASE_API_URL: "https://cold-insect-5.loca.lt/api/"
+  BASE_API_URL: "http://159.223.7.250:8080/api"
 };

@@ -1,0 +1,80 @@
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.product { 
+    display: flex;
+    justify-content: space-around;
+}
+
+.image-preview { 
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.image-preview p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-preview img {
+    width: 200px;
+    height: 200px;
+
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid darkseagreen;
+}
+
+.group {
+    margin-bottom: 20px;
+}
+
+.group > * {
+    margin-bottom: 5px;
+}
+
+.submit {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid darkseagreen;
+    background: white;
+    border-radius: 5px;
+    font-size: 16px;
+    flex: 1;
+
+    transition: 0.35s all ease-in-out;
+}
+
+.submit:hover {
+    background-color: darkseagreen;
+}
+
+legend{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+form > .group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.group > input {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid darkseagreen;
+}

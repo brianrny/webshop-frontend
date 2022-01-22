@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Order } from 'src/shared/models/order.model';
 import { OrderDetail } from 'src/shared/models/orderdetail.model';
 
@@ -18,7 +18,6 @@ export class UserorderproductComponent implements OnInit {
 
   constructor() {
     this.orderdetails = []
-    // this.firstorderdetail = this.orderdetails[0];
   }
 
   ngOnInit(): void {

@@ -15,14 +15,18 @@ export class WebshopService implements OnInit {
   constructor(private productService: ProductService) {
     this.isLoaded = false;
 
-    this.productService.getAllProducts().subscribe(data => {
-      this.setProducts(data)
-
-      this.isLoaded = true;
-    });
+    this.fetchProducts();
   }
 
   ngOnInit(): void { }
+
+  fetchProducts() {
+    this.productService.getAllProducts().subscribe(data => {
+      this.setProducts(data);
+
+      this.isLoaded = true;
+    })
+  }
 
   setProducts(products: Product[]) {
     this.products = products;

@@ -12,11 +12,13 @@ import AuthGuard from './core/services/authguard.service';
 import { RegisterComponent } from './core/webshop/register/register.component';
 import { UserordersComponent } from './core/webshop/userorders/userorders.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
+import { AddproductComponent } from './core/dashboard/product/addproduct/addproduct.component';
 
 const routes: Routes = [
   { path: '', component: WebshopComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'dashboard/product', component: ProductComponent },
+  { path: 'dashboard/product/new', component: AddproductComponent },
   { path: 'product/:id', component: ProductdetailComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },

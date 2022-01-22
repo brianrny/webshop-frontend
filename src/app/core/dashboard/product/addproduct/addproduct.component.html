@@ -1,0 +1,32 @@
+<div style="min-height: calc(100vh - 150px)" class="container">
+    <app-banner>
+        <h1>Add product</h1>
+        <p>Add a new product to the webshop.</p>
+    </app-banner>
+    <div class="product">
+        <form form #info="ngForm" (ngSubmit)="onFormSubmit(info)">
+            <legend>Product form</legend>
+            <div class="group">
+                <label for="name">Name</label>
+                <input type="text" ngModel id="name" name="name" [value]="product.name">
+            </div>
+            <div class="group">
+                <label for="description">Description</label>
+                <input type="text" ngModel id="description" name="description" [value]="product.name">
+            </div>
+            <div class="group">
+                <label for="imageUrl">Image url</label>
+                <input type="url" (keyup)="onChangeImageUrl($event)" ngModel [(ngModel)]="imageUrl" id="imageUrl" name="imageUrl" [value]="imageUrl">
+            </div>
+            <div class="group">
+                <label for="price">Price</label>
+                <input type="number" ngModel id="price" name="price" [value]="product.name">
+            </div>
+            <input class="submit" type="submit" value="Add">
+        </form>
+        <div class="image-preview">
+            <p style="font-size: 24px; font-weight: normal;">Image preview</p>
+            <img [src]="imageUrl">
+        </div>
+    </div>
+</div>

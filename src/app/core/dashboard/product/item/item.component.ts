@@ -35,14 +35,19 @@ export class ItemComponent implements OnInit {
   onDeleteProduct(id: number) {
     this.productService.deleteProduct(id).subscribe(
       () => {
-        console.log("Succesfully edited");
-
+        console.log("Succesfully deleted");
         this.editable = false;
+
+        window.location.reload()
       },
-      () => {
+      (err) => {
         console.log("Something went wrong");
 
+        console.log(err);
+        
+
         this.editable = false;
+
       }
     )
   }
