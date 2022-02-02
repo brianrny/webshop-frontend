@@ -6,10 +6,9 @@ services:
     restart: always
     environment:
       POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: root
       POSTGRES_DB: webshop
     ports:
-    - "5432:5432"
+      - "5432:5432"
   front:
     container_name: IPRWC-Front
     image: brianrat2000/iprwc-front

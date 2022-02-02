@@ -22,18 +22,10 @@ export class AddproductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onChangeImageUrl(event: Event) {
-    console.log((event.target as HTMLInputElement).value);
-    
-  }
-
   onFormSubmit(data: any) {
     const { name, description, imageUrl, price} = data.value
     
-    const product: Product = { id: Utils.generateId(), name: name, description: description, imageUrl: imageUrl, price: price }
-    
-    console.log(product);
-    
+    const product: Product = { id: Utils.generateId(), name: name, description: description, imageUrl: imageUrl, price: price }   
 
     this.productService.saveProduct(product).subscribe(
       res => {
